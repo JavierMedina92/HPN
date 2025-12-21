@@ -1,0 +1,106 @@
+/* styles.css */
+:root {
+  --bg: #0b1020;
+  --fg: #e6edf3;
+  --accent: #ffcc33;
+  --btn-bg: #16233a;
+  --btn-hover: #203356;
+  --message-glow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 40px rgba(255, 204, 51, 0.4);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: radial-gradient(ellipse at top, #0b1020 0%, #04070f 100%);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+}
+
+.app {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 12px;
+  place-items: center;
+  padding: 20px;
+  height: 100%;
+}
+
+.title {
+  margin: 0;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.btn {
+  background: var(--btn-bg);
+  color: var(--fg);
+  border: 1px solid #22304d;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 120ms ease, background 160ms ease, box-shadow 160ms ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+.btn:hover {
+  background: var(--btn-hover);
+  transform: translateY(-2px);
+}
+
+.stage {
+  position: relative;
+  width: min(100vw, 1000px);
+  height: min(70vh, 650px);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+  border: 1px solid #1b2944;
+}
+
+#canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background:
+    radial-gradient(ellipse at bottom, rgba(8, 16, 32, 0.5), rgba(4, 8, 16, 0.9)),
+    repeating-radial-gradient(circle at 20% 5%, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 2px, transparent 3px, transparent 10px);
+}
+
+/* Mensaje final */
+.final-message {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: clamp(28px, 6vw, 64px);
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-align: center;
+  color: #fff;
+  text-shadow: var(--message-glow);
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity 500ms ease, transform 600ms ease;
+  pointer-events: none;
+}
+
+.final-message.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Estrellas de fondo (decorativo) */
+.stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.6), rgba(255,255,255,0)),
+    radial-gradient(1px 1px at 70% 40%, rgba(255,255,255,0.6), rgba(255,255,255,0)),
+    radial-gradient(1px 1px at 30% 80%, rgba(255,255,255,0.6), rgba(255,255,255,0)),
+    radial-gradient(1px 1px at 85% 15%, rgba(255,255,255,0.6), rgba(255,255,255,0));
+  opacity: 0.25;
+  pointer-events: none;
+}

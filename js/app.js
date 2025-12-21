@@ -183,8 +183,11 @@ class FireworksShow {
 
   resize() {
     const rect = this.canvas.getBoundingClientRect();
+    
     // Escala para alta densidad de píxeles
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    this.width = rect.width;
+    this.height = rect.height;
     this.canvas.width = Math.floor(rect.width * dpr);
     this.canvas.height = Math.floor(rect.height * dpr);
     this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -195,7 +198,8 @@ class FireworksShow {
     this._messageTimer = 0;
     this.running = true;
 
-    const { width, height } = this.canvas;
+    const width = this.width;
+    const height = this.height;
     const groundY = height - 30;
 
     for (let i = 0; i < times; i++) {

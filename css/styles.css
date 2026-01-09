@@ -104,3 +104,7 @@ html, body {
   opacity: 0.25;
   pointer-events: none;
 }
+
+footer {
+  text-align: center;
+}
